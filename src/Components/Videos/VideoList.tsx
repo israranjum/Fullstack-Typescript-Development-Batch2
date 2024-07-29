@@ -1,11 +1,15 @@
 import Data from "../../Data/Data";
 import PlayButton from "../PlayButton/PlayButton";
+import AddVideo from "./AddVideo";
 import Video from "./Video";
 const VideoList = () => {
   
 
   return (
     <div style={{ marginTop: "10px" }}>
+      <div>
+        <AddVideo></AddVideo>
+      </div>
       <div
         style={{
           display: "flex",

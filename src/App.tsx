@@ -2,15 +2,15 @@
 
 // import FavColor from "./Components/FavColor";
 
-// import VideoList from "./Components/Videos/VideoList";
-import GetFormData from "./Components/GetFormData";
+import VideoList from "./Components/Videos/VideoList";
+// import GetFormData from "./Components/GetFormData";
 
 const App = () => {
   return (
     <div>
-      {/* <VideoList></VideoList> */}
+      <VideoList></VideoList>
       {/* <FavColor></FavColor> */}
-      <GetFormData />
+      {/* <GetFormData /> */}
     </div>
   );
 };

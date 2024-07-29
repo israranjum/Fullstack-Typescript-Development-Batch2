@@ -22,6 +22,11 @@ const GetFormData = () => {
         <input type="text" name="fathername" onChange={handleChange} />
         <input type="submit" onClick={handleSubmit} />
       </form>
+      <div>
+        Name: {name}
+        <br />
+        Father Name: {fatherName}
+      </div>
     </div>
   );
 };
