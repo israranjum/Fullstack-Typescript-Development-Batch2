@@ -1,5 +1,5 @@
 import { ChangeEvent, FormEvent, useState } from "react";
-import { VideoData } from "../../Utils/interface";
+import { AddVideoProps, VideoData } from "../../Utils/interface";
 
 // define initial value for Add Video State
 const initialValue: VideoData = {
@@ -10,7 +10,7 @@ const initialValue: VideoData = {
   time: "1 year ago",
   verified: true,
 };
-const AddVideo = () => {
+const AddVideo = ({addVideoData}:AddVideoProps) => {
   // Add Video State
   const [video, setVideo] = useState(initialValue);
 
@@ -22,6 +22,7 @@ const AddVideo = () => {
   function handleSubmit(e:  FormEvent) {
     e.preventDefault();
     console.log(video);
+    addVideoData(video);
       setVideo(initialValue);
   }
   return (

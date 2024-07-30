@@ -1,14 +1,22 @@
+import { useState } from "react";
 import Data from "../../Data/Data";
 import PlayButton from "../PlayButton/PlayButton";
 import AddVideo from "./AddVideo";
 import Video from "./Video";
+import { VideoData } from "../../Utils/interface";
 const VideoList = () => {
-  
+  const[videos, setVideos] = useState(Data)
 
+
+  // Add Video Functions (Single)
+  function addVideoData(video: VideoData) {
+    setVideos([...videos, {...video, id: videos.length + 1}])
+
+  }
   return (
-    <div style={{ marginTop: "10px" }}>
+    <div style={{ marginTop: "5px" }}>
       <div>
-        <AddVideo></AddVideo>
+        <AddVideo addVideoData={addVideoData}></AddVideo>
       </div>
       <div
         style={{
@@ -18,7 +26,7 @@ const VideoList = () => {
           padding: "10px",
         }}
       >
-        {Data.map((video, index) => {
+        {videos.map((video, index) => {
           return (
             <Video
               key={index}

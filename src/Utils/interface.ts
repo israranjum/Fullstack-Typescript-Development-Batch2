@@ -17,3 +17,7 @@ export interface PlayButtonProps{
     onPlay: () => void
     onPause: () => void
 }
+
+export interface AddVideoProps{
+    addVideoData: (video: VideoData) => void
+}
