@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { AddVideoProps, VideoData } from "../../Utils/interface";
 
 // define initial value for Add Video State
@@ -10,7 +10,7 @@ const initialValue: VideoData = {
   time: "1 year ago",
   verified: true,
 };
-const AddVideo = ({addVideoData}:AddVideoProps) => {
+const AddVideo = ({ addVideoData, editableVideo, updateVideo }: AddVideoProps) => {
   // Add Video State
   const [video, setVideo] = useState(initialValue);
 
@@ -19,12 +19,23 @@ const AddVideo = ({addVideoData}:AddVideoProps) => {
   }
 
   //     Add Video Handler
-  function handleSubmit(e:  FormEvent) {
+  function handleSubmit(e: FormEvent) {
     e.preventDefault();
-    console.log(video);
-    addVideoData(video);
-      setVideo(initialValue);
+    if (editableVideo) {
+      updateVideo(video);
+    }else{
+      addVideoData(video);
+    }
+    setVideo(initialValue);
   }
+
+  useEffect(() => {
+    if (editableVideo) {
+      setVideo(editableVideo);
+    }
+  }, [editableVideo]);
+
+
   return (
     <div>
       <form>
@@ -50,7 +61,7 @@ const AddVideo = ({addVideoData}:AddVideoProps) => {
           placeholder="Enter Channel"
         />
 
-        <button onClick={handleSubmit}>Add Video</button>
+        <button onClick={handleSubmit}>{editableVideo ? "Edit" : "Add"} Video</button>
       </form>
     </div>
   );

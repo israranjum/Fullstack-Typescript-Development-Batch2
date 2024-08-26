@@ -9,7 +9,9 @@ export interface VideoData {
 }
 
 export interface VideoProps extends VideoData {
-    children: React.ReactNode
+    children: React.ReactNode;
+    deleteVideoData: (id: number) => void
+    editVideo: (id: number) => void
 }
 
 export interface PlayButtonProps{
@@ -20,4 +22,15 @@ export interface PlayButtonProps{
 
 export interface AddVideoProps{
     addVideoData: (video: VideoData) => void
+    updateVideo: (video: VideoData) => void
+    editableVideo?: VideoData
+}
+
+export interface EditAbleVideos {
+    title: string;
+    views: string;
+    time: string;
+    channel: string;
+    id: number;
+    verified: boolean;
 }
